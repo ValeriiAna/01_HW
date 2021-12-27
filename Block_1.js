@@ -1,25 +1,34 @@
+
 // Если а – четное посчитать а*б, иначе а+б
-let a = prompt('Enter number a', 0);
-let b = prompt('Enter number b', 0);
-if (a % 2 === 0) {
-    alert(a*b);
-} else if (a % 2 === 1) {
-    alert(+a+ +b)
+function isEven(a,b) {
+    if ((a % 2) === 0) {
+        return a * b;
+    } else if ((a % 2) === 1) {
+        return a + b;
+    }
 }
+
 // Определить какой четверти принадлежит точка с координатами (х,у)
 function FindQuarter(x,y) {
     if (x>0 && y>0){
-        return 1;
+        return "1";
     } else if (x<0 && y>0){
-        return 2;
+        return "2";
     } else if(x<0 && y<0) {
-        return 3;
+        return "3";
     } else if(x>0 && y<0) {
-        return 4;
+        return "4";
+    } else if(x===0 && y > 0) {
+        return "1 & 2";
+    } else if(x > 0 && y === 0) {
+        return "1 & 4";
+    } else if(x < 0 && y === 0) {
+        return "3 & 2";
+    } else if(x === 0 && y < 0) {
+        return "3 & 4";
     }
 }
-alert(FindQuarter(7,-5));
-alert(FindQuarter(12,32));
+
 
 // Найти суммы только положительных из трех чисел
 function SumOfPositiveElems(a,b,c){
@@ -30,13 +39,19 @@ function SumOfPositiveElems(a,b,c){
     } else if(a<0 && b>0 && c>0) {
         return b+c;
     } else if(a>0 && b>0 && c>0) {
-        return a+b+c;
+        return a + b + c;
+    } else if(a < 0 && b <0 && c >0) {
+        return c;
+    } else if(a > 0 && b < 0 && c <0) {
+        return a;
+    } else if(a < 0 && b > 0 && c <0) {
+        return b;
     } else {
-        return false;
+        return NaN;
     }
 }
-alert(SumOfPositiveElems(1,4,5));
-alert(SumOfPositiveElems(1,-7,44))
+//alert(SumOfPositiveElems(1,4,5));
+//alert(SumOfPositiveElems(1,-7,44))
 
 // Посчитать выражение (макс(а*б*с, а+б+с))+3
 function CalculateMax(a,b,c){
@@ -49,8 +64,8 @@ function CalculateMax(a,b,c){
 
     }
 }
-alert(CalculateMax(1,1,1));
-alert(CalculateMax(2,5,5));
+//alert(CalculateMax(1,1,1));
+//alert(CalculateMax(2,5,5));
 
 // Написать программу определения оценки студента по его рейтингу, на основе следующих правил
 function FindStudentMark(R){
@@ -68,8 +83,10 @@ function FindStudentMark(R){
         return('A');
     }
 }
-alert(FindStudentMark(44));
-alert(FindStudentMark(75));
+//alert(FindStudentMark(44));
+//alert(FindStudentMark(75));
 
 
-
+module.exports = {
+    isEven, FindQuarter, SumOfPositiveElems, CalculateMax, FindStudentMark
+}
